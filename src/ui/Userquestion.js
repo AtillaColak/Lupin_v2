@@ -27,7 +27,7 @@ function UserQuestion({submitHandleFunction}) {
   }
 
   return (
-    <div className="flex flex-col h-screen justify-end items-center">
+    <div className="flex flex-col justify-end items-center">
       <form onSubmit={handleSubmit} className="w-full flex flex-col">
         {/* Render error message conditionally */}
         {limitReached && <span className="text-red-500 mb-2 self-center">Input limit reached. Please shorten your text.</span>}

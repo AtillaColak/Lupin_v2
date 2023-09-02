@@ -254,22 +254,24 @@ function App() {
 	// if the first time, render the page with synchronize scene. 
 	if(!pageBody) {
 		return (
-			<div className="w-96 h-72 bg-zinc-300">
+			<div className="w-96 h-128 bg-zinc-300" style={{height: "32rem"}}>
 				<Synchronize onClick={scrapePage}/> 
 			</div>
 		);
 	}
 	else {
 		return (
-			<div className="chat-container flex flex-col overflow-auto w-96 h-72  bg-zinc-300">
-			<Banner onClick={handleClear} downloadHistory={downloadHistory}/>
-			{chatHistory && chatHistory.map((message, index) => (
-			<ChatBubble key={index} text={message.text} from={message.from} />
-			))}
-			<UserQuestion submitHandleFunction={handleSubmit}/>
-			<div ref={messagesEndRef}/> 
-		</div>  
-	  );
+			<div class="flex flex-col w-96 bg-zinc-300" style={{height: "32rem"}}>
+				<Banner onClick={handleClear} downloadHistory={downloadHistory}/>
+				<div className="chat-container flex flex-col grow overflow-auto overflow-y-scroll">
+					{chatHistory && chatHistory.map((message, index) => (
+					<ChatBubble key={index} text={message.text} from={message.from} />
+					))}
+					<div ref={messagesEndRef}/> 
+				</div>
+			    <UserQuestion submitHandleFunction={handleSubmit}/>
+		    </div>
+		);
 	}
 }
 
